@@ -106,8 +106,15 @@ homesick symlink -f Gorgoroth/dotfiles
 
 # --- QTF specific -----------------------------------------------------------
 # ----------------------------------------------------------------------------
-# TODO generate SSH key and deploy to important servers
+# Generate SSH key and deploy to important servers
+ssh-keygen -f id_rsa -t rsa -N ''
+ssh-copy-id -i ~/.ssh/id_rsa.pub admin@qtf.selfhost.de
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@87.106.53.203
+
 # TODO prompt to add key to Gitlab
+echo 'Copy this public key to your Gitlab (and Github) account'
+cat ~/.ssh/id_rsa.pub
+
 # TODO get our middleman templates after SSH key has been added to Gitlab
 
 # --- Create our folder structure
