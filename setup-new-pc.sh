@@ -1,8 +1,7 @@
-
 #!/bin/bash
 # Author:     Valentin Klinghammer <vk@quelltextfabrik.de>
 # Created:    05.06.2013
-# ------------------------------------------------------------
+# ----------------------------------------------------------------------------
 #
 # Purpose:
 # This script is to be run on new dev PCs to ensure that the
@@ -14,23 +13,20 @@
 # * Username is set to localpart of QTF mail address
 # * Full name is set
 #
-# ------------------------------------------------------------
+# ----------------------------------------------------------------------------
 
-# --- Update the system -------------------------------------------------------
-# -----------------------------------------------------------------------------
+# --- Update the system ------------------------------------------------------
+# ----------------------------------------------------------------------------
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# --- Install and configure helpers -------------------------------------------
-# --- Install build dependencies
-sudo apt-get install -y build-essential git-core cmake
+# --- Install and configure helpers ------------------------------------------
+# --- Install build dependencies and tools
+sudo apt-get install -y build-essential git-core cmake curl
 
-# --- Install Curl
-sudo apt-get install -y curl
-
-# --- Install software --------------------------------------------------------
-# -----------------------------------------------------------------------------
-# --- Install Ruby and Gems ---------------------------------------------------
+# --- Install software -------------------------------------------------------
+# ----------------------------------------------------------------------------
+# --- Install Ruby and Gems --------------------------------------------------
 # --- Fetch and install RVM
 # Install Ruby 2.0 with dev headers
 # Install latest Rails
@@ -42,7 +38,6 @@ rvm get stable
 
 # --- Install Middleman Gem (which includes SASS)
 gem install middleman
-# TODO get our middleman templates
 
 # --- Install homesick
 gem install homesick
@@ -109,8 +104,12 @@ sudo apt-get install -y htop skype filezilla gimp
 homesick clone Gorgoroth/dotfiles
 homesick symlink -f Gorgoroth/dotfiles
 
-# --- QTF specific ------------------------------------------------------------
-# -----------------------------------------------------------------------------
+# --- QTF specific -----------------------------------------------------------
+# ----------------------------------------------------------------------------
+# TODO generate SSH key and deploy to important servers
+# TODO prompt to add key to Gitlab
+# TODO get our middleman templates after SSH key has been added to Gitlab
+
 # --- Create our folder structure
 mkdir -p "~/Quelltextfabrik/Apps"
 mkdir -p "~/Quelltextfabrik/Web"
