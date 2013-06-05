@@ -117,6 +117,12 @@ cat ~/.ssh/id_rsa.pub
 
 # TODO get our middleman templates after SSH key has been added to Gitlab
 
+# Add self-signed certificate to Chrome
+sudo apt-get install libnss3-tools
+openssl s_client -connect gitlab.quelltextfabrik.de:1337 -showcerts > gitlab.crt
+certutil -d sql:$HOME/.pki/nssdb -A -t CP,,C -n "gitlab.quelltextfabrik.de" -i gitlab.crt
+rm gitlab.crt
+
 # --- Create our folder structure
 mkdir -p "~/Quelltextfabrik/Apps"
 mkdir -p "~/Quelltextfabrik/Web"
