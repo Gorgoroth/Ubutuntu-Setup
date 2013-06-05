@@ -33,7 +33,7 @@ sudo apt-get install -y build-essential git-core cmake curl
 \curl -L https://get.rvm.io | bash -s stable --ruby=2.0.0-dev --rails
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> "$HOME"/.bashrc
 source "$HOME"/.bashrc
-# TODO otherwise we get errors when installing gems
+# TODO otherwise we get errors when installing gems, find out why
 rvm get stable
 
 # --- Install Middleman Gem (which includes SASS)
@@ -102,7 +102,7 @@ sudo apt-get install -y htop skype filezilla gimp
 # --- Configure --------------------------------------------------------------
 # --- Dotfile repo
 homesick clone Gorgoroth/dotfiles
-homesick symlink -f Gorgoroth/dotfiles
+homesick symlink Gorgoroth/dotfiles --force=FORCE
 
 # --- QTF specific -----------------------------------------------------------
 # ----------------------------------------------------------------------------
