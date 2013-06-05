@@ -80,8 +80,7 @@ rm dropbox_1.6.0_amd64.deb
 # This runs interactively and allows the user to specify a mysql root pw
 sudo apt-get install -y tasksel
 sudo tasksel install lamp-server
-# TODO mod rewrite
-# TODO mod vhost alias
+sudo a2enmod rewrite
 # TODO mass vhost config
 sudo apt-get install -y phpmyadmin
 
