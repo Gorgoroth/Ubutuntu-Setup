@@ -66,6 +66,7 @@ gconftool-2 --set "/apps/guake/style/background/transparency" --type int 25
 # --- Install Powerline
 mkdir -p ~/Programs/tmux-powerline
 git clone git://github.com/erikw/tmux-powerline.git ~/Programs/tmux-powerline
+cp ~/Programs/tmux-powerline/themes/default.sh ~/Programs/tmux-powerline/themes/mytheme.sh
 # Install patched font for Guake/TMUX
 git clone git://github.com/Lokaltog/powerline-fonts.git
 mkdir -p ~/.fonts
