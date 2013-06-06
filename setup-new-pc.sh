@@ -152,3 +152,6 @@ sudo apt-get install libnss3-tools
 mkdir -p "~/Quelltextfabrik/Apps"
 mkdir -p "~/Quelltextfabrik/Web"
 mkdir -p "~/Quelltextfabrik/tmp"
+
+# --- Restart the machine for good measure
+sudo reboot
