@@ -48,8 +48,32 @@ sudo apt-get install tmux
 
 # --- Install Guake
 sudo apt-get install guake
-# TODO add to auto start
-# TODO config
+# Auto start is configured from dotfile repo
+# Configure guake
+gconftool-2 --set "/apps/guake/keybindings/global/show_hide" --type string "grave"
+gconftool-2 --set "/apps/guake/general/use_default_font" --type bool false
+gconftool-2 --set "/apps/guake/general/use_login_shell" --type bool true
+gconftool-2 --set "/apps/guake/general/use_popup" --type bool false
+gconftool-2 --set "/apps/guake/general/use_scrollbar" --type bool false
+gconftool-2 --set "/apps/guake/general/use_trayicon" --type bool false
+gconftool-2 --set "/apps/guake/general/window_height" --type int 66
+gconftool-2 --set "/apps/guake/general/window_width" --type int 100
+gconftool-2 --set "/apps/guake/general/window_tabbar" --type bool false
+gconftool-2 --set "/apps/guake/general/window_losefocus" --type bool false
+gconftool-2 --set "/apps/guake/style/background/color" --type string "#111111"
+gconftool-2 --set "/apps/guake/style/background/transparency" --type int 25
+
+# --- Install Powerline
+mkdir -p ~/Programs/tmux-powerline
+git clone git://github.com/erikw/tmux-powerline.git ~/Programs/tmux-powerline
+# Install patched font for Guake/TMUX
+git clone git://github.com/Lokaltog/powerline-fonts.git
+mkdir -p ~/.fonts
+mv powerline-fonts/UbuntuMono/*.ttf ~/.fonts/
+fc-cache -vf ~/.fonts
+rm -rf powerline-fonts
+# Update guake config to use patched font
+gconftool-2 --set "/apps/guake/style/font/style" --type string "Ubuntu Mono derivative Powerline 10"
 
 # --- Install latest VIM after compiling from source
 sudo apt-get -y install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev mercurial
@@ -64,6 +88,7 @@ cd vim
   --enable-gui=gtk2 --enable-cscope --prefix=/usr
 make VIMRUNTIMEDIR=/usr/share/vim/vim73
 sudo make install
+rm -rf vim
 
 # --- Install Google Chrome
 curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -107,20 +132,21 @@ homesick symlink Gorgoroth/dotfiles --force=FORCE
 # ----------------------------------------------------------------------------
 # Generate SSH key and deploy to important servers
 ssh-keygen -f id_rsa -t rsa -N ''
+sleep 2
 ssh-copy-id -i ~/.ssh/id_rsa.pub admin@qtf.selfhost.de
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@87.106.53.203
 
-# TODO prompt to add key to Gitlab
+# Prompt to add key to Gitlab
 echo 'Copy this public key to your Gitlab (and Github) account'
 cat ~/.ssh/id_rsa.pub
 
 # TODO get our middleman templates after SSH key has been added to Gitlab
 
-# Add self-signed certificate to Chrome
+# TODO Add self-signed certificate to Chrome
 sudo apt-get install libnss3-tools
-openssl s_client -connect gitlab.quelltextfabrik.de:1337 -showcerts > gitlab.crt
-certutil -d sql:$HOME/.pki/nssdb -A -t CP,,C -n "gitlab.quelltextfabrik.de" -i gitlab.crt
-rm gitlab.crt
+# openssl s_client -connect gitlab.quelltextfabrik.de:1337 -showcerts > gitlab.crt
+# certutil -d sql:$HOME/.pki/nssdb -A -t CP,,C -n "gitlab.quelltextfabrik.de" -i gitlab.crt
+# rm gitlab.crt
 
 # --- Create our folder structure
 mkdir -p "~/Quelltextfabrik/Apps"
