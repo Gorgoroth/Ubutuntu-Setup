@@ -64,17 +64,18 @@ gconftool-2 --set "/apps/guake/style/background/color" --type string "#111111"
 gconftool-2 --set "/apps/guake/style/background/transparency" --type int 25
 
 # --- Install Powerline
-mkdir -p ~/Programs/tmux-powerline
-git clone git://github.com/erikw/tmux-powerline.git ~/Programs/tmux-powerline
-cp ~/Programs/tmux-powerline/themes/default.sh ~/Programs/tmux-powerline/themes/mytheme.sh
-# Install patched font for Guake/TMUX
-git clone git://github.com/Lokaltog/powerline-fonts.git
-mkdir -p ~/.fonts
-mv powerline-fonts/UbuntuMono/*.ttf ~/.fonts/
+# Install powerline via pip
+sudo apt-get install python-pip
+pip install --user git+git://github.com/Lokaltog/powerline
+echo 'if [ -d "$HOME/.local/bin"  ]; then' >> .bashrc
+echo '  PATH="$HOME/.local/bin:$PATH"' >> .bashrc
+echo 'fi'
+source .bashrc
+# Install fonts, we're using guake, so we can use fontconfig
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
 fc-cache -vf ~/.fonts
-rm -rf powerline-fonts
-# Update guake config to use patched font
-gconftool-2 --set "/apps/guake/style/font/style" --type string "Ubuntu Mono derivative Powerline 10"
+mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 # --- Install latest VIM after compiling from source
 sudo apt-get -y install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev mercurial
