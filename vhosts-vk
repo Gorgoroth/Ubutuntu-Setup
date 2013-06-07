@@ -1,0 +1,13 @@
+<Virtualhost *:80>
+  VirtualDocumentRoot "/home/vk/Quelltextfabrik/Web/%1/public"
+  ServerName vhosts.localhost
+  ServerAlias *.localhost
+  UseCanonicalName Off
+
+  <Directory "/home/vk/Quelltextfabrik/Web/*/public">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+</Virtualhost>

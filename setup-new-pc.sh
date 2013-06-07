@@ -108,7 +108,10 @@ rm dropbox_1.6.0_amd64.deb
 sudo apt-get install -y tasksel
 sudo tasksel install lamp-server
 sudo a2enmod rewrite
-# TODO mass vhost config
+# Configure mass virtual hosts, so we can use project.localhost for development
+sudo a2enmod vhost_alias
+sudo curl -Lo /etc/apache2/sites-enabled/vhosts-vk https://github.com/Gorgoroth/Ubutuntu-Setup/raw/master/vhosts-vk
+sudo ln -s /etc/apache2/sites-available/vhosts-vk /etc/apache2/sites-enabled/vhosts-vk
 sudo apt-get install -y phpmyadmin
 
 # --- Configure dns for QTF
