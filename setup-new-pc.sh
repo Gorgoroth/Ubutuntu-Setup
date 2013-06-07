@@ -114,13 +114,13 @@ sudo apt-get install -y phpmyadmin
 # --- Configure dns for QTF
 # Install dnsmasq
 sudo apt-get install -y dnsmasq
-sudo echo "address=/localhost/127.0.0.1" > /etc/dnsmasq.d/localhost
+sudo sh -c 'echo "address=/localhost/127.0.0.1" > /etc/dnsmasq.d/localhost'
 sudo /etc/init.d/dnsmasq restart
 
 # Set dnsmasq as default DNS
 # TODO the config folder is different for Ubuntu (dhcp3) and Linux Mint (dhcp)
 # This should ideally be autodected, default to Mint for now
-sudo echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhcp/dhclient.conf
+sudo sh -c "echo 'prepend domain-name-servers 127.0.0.1;' >> /etc/dhcp/dhclient.conf"
 
 # --- Other tools
 sudo apt-get install -y htop skype filezilla gimp
