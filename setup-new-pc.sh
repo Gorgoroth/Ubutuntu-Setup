@@ -111,7 +111,6 @@ sudo a2enmod rewrite
 # Configure mass virtual hosts, so we can use project.localhost for development
 sudo a2enmod vhost_alias
 sudo curl -Lo /etc/apache2/sites-enabled/vhosts-vk https://github.com/Gorgoroth/Ubutuntu-Setup/raw/master/vhosts-vk
-sudo ln -s /etc/apache2/sites-available/vhosts-vk /etc/apache2/sites-enabled/vhosts-vk
 sudo apt-get install -y phpmyadmin
 
 # --- Configure dns for QTF
