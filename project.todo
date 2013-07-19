@@ -1,0 +1,20 @@
+FILE setup-new-pc.sh:
+☐ 36: otherwise we get errors when installing gems, find out why
+☐ 49: install latest i3
+☐ 51: install pretty fonts
+☐ 52: install pretty mouse pointers
+☐ 53: install vifm and a lightweight x manager
+☐ 56: clipboard tweak with autocutsel
+☐ 57: audioplayer, console or other
+☐ 103: the config folder is different for Ubuntu (dhcp3) and Linux Mint (dhcp)
+☐ 107: Install PostgresQL
+☐ 116: Homesick needs to be finetuned before its ready, for now only download important files
+☐ 131: Get our middleman templates after SSH key has been added to Gitlab
+☐ 133: Add self-signed certificate to Chrome
+☐ 145: prompt for reboot
+{{{
+✔ 55: install filemanager, vifm and a lightweight x manager @done (2013-07-19 18:16)
+✔ 43: Homesick needs to be finetuned before its ready @done (2013-07-19 18:15)
+✔ 52: install @done (2013-07-19 17:57)
+}}}
+

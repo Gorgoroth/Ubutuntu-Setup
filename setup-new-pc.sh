@@ -42,41 +42,21 @@ gem install middleman
 # --- Install homesick
 gem install homesick
 
+# --- Install desktop environment --------------------------------------------
+# ----------------------------------------------------------------------------
+sudo apt-get -y install xorg-server xorg-utils
+
+# TODO install latest i3
+sudo apt-get -y install conky dmenu feh
+# TODO install pretty fonts
+# TODO install pretty mouse pointers
+# TODO install vifm and a lightweight x manager
+sudo apt-get install dmz-cursor-theme
+sudo apt-get -y install rxvt-unicode-256color
+# TODO clipboard tweak with autocutsel
+# TODO audioplayer, console or other
+
 # --- Install other dev software ---------------------------------------------
-# --- Install TMUX
-sudo apt-get install tmux
-
-# --- Install Guake
-sudo apt-get install guake
-# Auto start is configured from dotfile repo
-# Configure guake
-gconftool-2 --set "/apps/guake/keybindings/global/show_hide" --type string "grave"
-gconftool-2 --set "/apps/guake/general/use_default_font" --type bool false
-gconftool-2 --set "/apps/guake/general/use_login_shell" --type bool true
-gconftool-2 --set "/apps/guake/general/use_popup" --type bool false
-gconftool-2 --set "/apps/guake/general/use_scrollbar" --type bool false
-gconftool-2 --set "/apps/guake/general/use_trayicon" --type bool false
-gconftool-2 --set "/apps/guake/general/window_height" --type int 66
-gconftool-2 --set "/apps/guake/general/window_width" --type int 100
-gconftool-2 --set "/apps/guake/general/window_tabbar" --type bool false
-gconftool-2 --set "/apps/guake/general/window_losefocus" --type bool false
-gconftool-2 --set "/apps/guake/style/background/color" --type string "#111111"
-gconftool-2 --set "/apps/guake/style/background/transparency" --type int 25
-
-# --- Install Powerline
-# Install powerline via pip
-sudo apt-get install python-pip
-pip install --user git+git://github.com/Lokaltog/powerline
-echo 'if [ -d "$HOME/.local/bin"  ]; then' >> .bashrc
-echo '  PATH="$HOME/.local/bin:$PATH"' >> .bashrc
-echo 'fi'
-source .bashrc
-# Install fonts, we're using guake, so we can use fontconfig
-wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
-fc-cache -vf ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-
 # --- Install latest VIM after compiling from source
 sudo apt-get -y install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev mercurial
 sudo apt-get -y remove vim vim-runtime gvim
@@ -124,27 +104,31 @@ sudo /etc/init.d/dnsmasq restart
 # This should ideally be autodected, default to Mint for now
 sudo sh -c "echo 'prepend domain-name-servers 127.0.0.1;' >> /etc/dhcp/dhclient.conf"
 
+# TODO Install PostgresQL
+
 # --- Other tools
-sudo apt-get install -y htop skype filezilla gimp
+sudo apt-get install -y htop skype filezilla gimp virtualbox
 
 # --- Configure --------------------------------------------------------------
 # --- Dotfile repo
-homesick clone Gorgoroth/dotfiles
-homesick symlink Gorgoroth/dotfiles --force=FORCE
+# homesick clone Gorgoroth/dotfiles
+# homesick symlink Gorgoroth/dotfiles --force=FORCE
+# TODO Homesick needs to be finetuned before its ready, for now only download important files
+wget https://raw.github.com/Gorgoroth/dotfiles/master/home/.vimrc
 
 # --- QTF specific -----------------------------------------------------------
 # ----------------------------------------------------------------------------
 # Generate SSH key and deploy to important servers
 ssh-keygen -f id_rsa -t rsa -N ''
-sleep 2
+sleep 10
 ssh-copy-id -i ~/.ssh/id_rsa.pub admin@qtf.selfhost.de
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@87.106.53.203
 
 # Prompt to add key to Gitlab
-echo 'Copy this public key to your Gitlab (and Github) account'
+echo 'Add this public key to your Gitlab (and Github) account'
 cat ~/.ssh/id_rsa.pub
 
-# TODO get our middleman templates after SSH key has been added to Gitlab
+# TODO Get our middleman templates after SSH key has been added to Gitlab
 
 # TODO Add self-signed certificate to Chrome
 sudo apt-get install libnss3-tools
@@ -158,4 +142,5 @@ mkdir -p "~/Quelltextfabrik/Web"
 mkdir -p "~/Quelltextfabrik/tmp"
 
 # --- Restart the machine for good measure
-sudo reboot
+# TODO prompt for reboot
+# sudo reboot
