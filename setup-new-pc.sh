@@ -68,7 +68,8 @@ cd vim
   --enable-pythoninterp \
   --enable-perlinterp \
   --enable-gui=gtk2 --enable-cscope --prefix=/usr
-make VIMRUNTIMEDIR=/usr/share/vim/vim73
+# TODO is there a way to configure the runetime dir automatically? Got problems with this script when vim changed from 73 to 74a
+make VIMRUNTIMEDIR=/usr/share/vim/vim74a
 sudo make install
 rm -rf vim
 

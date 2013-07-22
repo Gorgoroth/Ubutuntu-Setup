@@ -6,12 +6,13 @@ FILE setup-new-pc.sh:
 ☐ 53: install vifm and a lightweight x manager
 ☐ 56: clipboard tweak with autocutsel
 ☐ 57: audioplayer, console or other
-☐ 103: the config folder is different for Ubuntu (dhcp3) and Linux Mint (dhcp)
-☐ 107: Install PostgresQL
-☐ 116: Homesick needs to be finetuned before its ready, for now only download important files
-☐ 131: Get our middleman templates after SSH key has been added to Gitlab
-☐ 133: Add self-signed certificate to Chrome
-☐ 145: prompt for reboot
+☐ 71: is there a way to configure the runetime dir automatically? Got problems with this script when vim changed from 73 to 74a
+☐ 104: the config folder is different for Ubuntu (dhcp3) and Linux Mint (dhcp)
+☐ 108: Install PostgresQL
+☐ 117: Homesick needs to be finetuned before its ready, for now only download important files
+☐ 132: Get our middleman templates after SSH key has been added to Gitlab
+☐ 134: Add self-signed certificate to Chrome
+☐ 146: prompt for reboot
 {{{
 ✔ 55: install filemanager, vifm and a lightweight x manager @done (2013-07-19 18:16)
 ✔ 43: Homesick needs to be finetuned before its ready @done (2013-07-19 18:15)
