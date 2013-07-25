@@ -137,7 +137,7 @@ homesick symlink Gorgoroth/dotfiles --force=FORCE
 # Generate SSH key and deploy to important servers
 ssh-keygen -f id_rsa -t rsa -N ''
 sleep 2
-ssh-copy-id -i ~/.ssh/id_rsa.pub admin@qtf.selfhost.de
+ssh-copy-id -i ~/.ssh/id_rsa.pub admin@qtf.selfhost.me
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@87.106.53.203
 
 # Prompt to add key to Gitlab
